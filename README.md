@@ -1,1 +1,1 @@
-# hsgfin_open_research
+# Finance Open Research
