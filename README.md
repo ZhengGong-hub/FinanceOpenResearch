@@ -48,3 +48,6 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines on contributing to this pr
 ## License
 
 [Your chosen license] 
+
+## Remarks 
+Tracking with Git-LFS for data files
