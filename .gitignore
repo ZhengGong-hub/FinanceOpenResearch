@@ -136,4 +136,5 @@ dmypy.json
 # *.h5
 # *.hdf5
 # *.feather
-papers/paper1_identifier/data/processed/*.csv
+*.csv
+*.parquet
