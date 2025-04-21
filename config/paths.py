@@ -90,7 +90,3 @@ class ProjectPaths:
         paths["scripts"].mkdir(parents=True, exist_ok=True)
         paths["notebooks"].mkdir(parents=True, exist_ok=True)
         paths["tests"].mkdir(parents=True, exist_ok=True)
-
-
-# Create a global instance
-paths = ProjectPaths() 
