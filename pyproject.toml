@@ -26,6 +26,7 @@ dependencies = [
     "pytest-cov>=4.0.0",
     "tqdm>=4.65.0",
     "pyarrow>=14.0.1",  # Required for parquet support
+    "rpy2>=3.5.15"
 ]
 
 [build-system]
