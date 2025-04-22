@@ -138,3 +138,6 @@ dmypy.json
 # *.feather
 *.csv
 *.parquet
+
+# ignore the duckdb database
+*.duckdb
