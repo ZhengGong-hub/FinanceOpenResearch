@@ -6,13 +6,15 @@ library(duckdb)
 # Print a message to confirm the script is running
 print("Starting regression analysis with DuckDB")
 
-# Check if db_path is provided as a command line argument
+# Check if db_path and table_name are provided as command line arguments
 args <- commandArgs(trailingOnly = TRUE)
-if (length(args) > 0) {
+if (length(args) >= 2) {
   db_path <- args[1]
+  table_name <- args[2]
   print(paste("Using database path:", db_path))
+  print(paste("Using table name:", table_name))
 } else {
-  stop("Database path not provided. Please provide the path to the DuckDB database as a command line argument.")
+  stop("Database path and table name not provided. Please provide the path to the DuckDB database and the table name as command line arguments.")
 }
 
 # Connect to the DuckDB database
@@ -21,7 +23,7 @@ tryCatch({
   print("Successfully connected to DuckDB database")
   
   # Load the data from the DuckDB database
-  data <- dbGetQuery(con, "SELECT * FROM analysis_data")
+  data <- dbGetQuery(con, paste0("SELECT * FROM ", table_name))
   print(paste("Successfully loaded data with", nrow(data), "rows and", ncol(data), "columns"))
   
   # Print the first 5 rows of the data
