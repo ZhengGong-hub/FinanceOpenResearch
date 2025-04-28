@@ -30,7 +30,7 @@ def prepare_data(data: pd.DataFrame):
     return data
 
 @log_execution_time
-def run_r_script(r_script_path: Path, db_path: Path, table_name: str):
+def run_r_script(r_script_path: Path, db_path: Path, table_name: str, output_dir: str):
     """
     Run the R script with the DuckDB database path.
     
@@ -38,11 +38,12 @@ def run_r_script(r_script_path: Path, db_path: Path, table_name: str):
         r_script_path: Path to the R script
         db_path: Path to the DuckDB database
         table_name: Name of the table in the DuckDB database
+        output_dir: Path to the output directory
     """
     logger.info(f"Running R script: {r_script_path}")
     
     # Run the R script with the database path and table name as command line arguments
-    cmd = ["Rscript", str(r_script_path), str(db_path), table_name]
+    cmd = ["Rscript", str(r_script_path), str(db_path), table_name, str(output_dir)]
     logger.info(f"Running command: {' '.join(cmd)}")
     
     try:
@@ -79,7 +80,7 @@ def run():
     table_name = "analysis_data"
 
     # Check for required R packages
-    required_packages = ["fixest", "dplyr", "duckdb"]
+    required_packages = ["fixest", "dplyr", "duckdb", "modelsummary"]
     for package in required_packages:
         check_r_package(package)
 
@@ -91,7 +92,7 @@ def run():
     save_df_to_duckdb(data, db_path=str(duckdb_path), table_name=table_name)
 
     # Run the R script
-    run_r_script(r_script_path, db_path=str(duckdb_path), table_name=table_name)
+    run_r_script(r_script_path, db_path=str(duckdb_path), table_name=table_name, output_dir=paths["data"]["regression"])
     
     logger.info("Analysis pipeline completed successfully")
 

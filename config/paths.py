@@ -40,6 +40,7 @@ class ProjectPaths:
             "data": {
                 "raw": paper_dir / "data" / "raw",
                 "processed": paper_dir / "data" / "processed",
+                "regression": paper_dir / "data" / "regression",
             },
             "src": paper_dir / "src",
             "scripts": paper_dir / "scripts",
