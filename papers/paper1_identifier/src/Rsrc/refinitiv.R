@@ -1,4 +1,4 @@
-# R script for regression analysis using DuckDB (MSCI data)
+# R script for regression analysis using DuckDB (Refinitiv data)
 library(fixest)
 library(dplyr)
 library(duckdb)
@@ -7,7 +7,7 @@ source("common/r_helper/output_file.R")
 source("common/r_helper/logger.R")
 
 # Print a message to confirm the script is running
-log_message("Starting regression analysis with DuckDB (MSCI)")
+log_message("Starting regression analysis with DuckDB (Refinitiv)")
 
 # Check if db_path and table_name are provided as command line arguments
 args <- commandArgs(trailingOnly = TRUE)
@@ -32,33 +32,33 @@ data <- dbGetQuery(con, paste0("SELECT * FROM ", table_name))
 log_message(paste("Successfully loaded data with", nrow(data), "rows and", ncol(data), "columns"))
 
 # preprocess data
-data$hetero_esg   <- data$esg_esg_pctg * data$msci_esg_WEIGHTED_SCORE
-data$hetero_esg_e <- data$esg_e_pctg   * data$msci_esg_ENVIRONMENTAL_PILLAR_SCORE
-data$hetero_esg_s <- data$esg_s_pctg   * data$msci_esg_SOCIAL_PILLAR_SCORE
-data$hetero_esg_g <- data$esg_g_pctg   * data$msci_esg_GOVERNANCE_PILLAR_SCORE
+data$hetero_esg   <- data$esg_esg_pctg * data$Scores_ESGCombinedScore
+data$hetero_esg_e <- data$esg_e_pctg   * data$Scores_EnvironmentPillarScore
+data$hetero_esg_s <- data$esg_s_pctg   * data$Scores_SocialPillarScore
+data$hetero_esg_g <- data$esg_g_pctg   * data$Scores_GovernancePillarScore
 
 # Create output directory if it doesn't exist
 dir.create(output_dir, recursive = TRUE, showWarnings = FALSE)
 log_message(paste("Output directory created:", output_dir))
 
 # Define cutoff years to loop through
-cutoff_years <- c(2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018)
+cutoff_years <- c(2008, 2010, 2012, 2014, 2016, 2018)
 
 # Define model configurations
 model_configs <- list(
-  list(name = "Overall_ESG", var = "hetero_esg", score = "msci_esg_WEIGHTED_SCORE"),
-  list(name = "Environmental", var = "hetero_esg_e", score = "msci_esg_ENVIRONMENTAL_PILLAR_SCORE"),
-  list(name = "Social", var = "hetero_esg_s", score = "msci_esg_SOCIAL_PILLAR_SCORE"),
-  list(name = "Governance", var = "hetero_esg_g", score = "msci_esg_GOVERNANCE_PILLAR_SCORE")
+  list(name = "Overall_ESG", var = "hetero_esg"),
+  list(name = "Environmental", var = "hetero_esg_e"),
+  list(name = "Social", var = "hetero_esg_s"),
+  list(name = "Governance", var = "hetero_esg_g")
 )
 
 # Function to run a model and save results
 run_and_save_model <- function(var_name, model_name, data, cutoff_year, is_first_cutoff) {
   log_message(paste("Model:", model_name, "- Cutoff year", cutoff_year))
   
-  # Run the model with both individual terms and interaction
-  formula <- as.formula(paste("recs_panel_rec_code ~", var_name,
-                            "| isin^recs_panel_beg_date + recs_panel_AMASKCD^recs_panel_beg_date"))
+  # Run the model
+  formula <- as.formula(paste("recs_panel_rec_code ~", var_name, 
+                              "| isin^recs_panel_beg_date + recs_panel_AMASKCD^recs_panel_beg_date"))
   model <- feols(formula, data = data)
   log_message(paste("Model completed for", model_name, "with cutoff year", cutoff_year))
   

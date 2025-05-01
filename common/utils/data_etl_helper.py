@@ -13,7 +13,12 @@ def load_data(path: Path):
     
     # if it is a parquet file, load it using pandas
     if path.suffix == ".parquet":
-        return pd.read_parquet(path)
+        df = pd.read_parquet(path)
+        logger.info(f"Loaded data from {path}")
+        logger.info(f"Data shape: {df.shape}")
+        # start a new line and then print the first 5 rows of the dataframe, within the same logger.info
+        print(f"\n{df.head()}")
+        return df
     # if it is a duckdb file, load it using duckdb
     elif path.suffix == ".duckdb":
         return duckdb.read_parquet(path)
