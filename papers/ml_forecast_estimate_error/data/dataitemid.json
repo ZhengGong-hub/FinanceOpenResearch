@@ -1,0 +1,31 @@
+{
+    "EPS": 100284,
+    "EPSDiff": 100360,
+    "EPS_Surprise": 100361,
+    "EPS_count": 100282,
+    "EPS_std": 100283,
+
+    "EPSNormalized": 100179,
+    "EPSNormalizedDiff": 100330,
+    "EPSNormalized_Surprise": 100331,
+    "EPSNormalized_count": 100177,
+    "EPSNormalized_std": 100178,
+
+    "revenue": 100186,
+    "revenueDiff": 100332,
+    "revenue_Surprise": 100333,
+    "revenue_count": 100184,
+    "revenue_std": 100185,
+
+    "revenue_guidance_high": 22390,
+    "revenue_guidance_mid": 22322,
+    "revenue_guidance_low": 22450,
+
+    "EPS_guidance_high": 22384,
+    "EPS_guidance_mid": 22316,
+    "EPS_guidance_low": 22444,
+
+    "EPSNormalized_guidance_high": 22383,
+    "EPSNormalized_guidance_mid": 22315,
+    "EPSNormalized_guidance_low": 22443
+}
