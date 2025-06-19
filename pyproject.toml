@@ -28,7 +28,7 @@ dependencies = [
     "tqdm>=4.65.0",
     "pyarrow>=14.0.1",  # Required for parquet support
     "duckdb>=0.9.0",
-    "openai-batch-wrapper @ git+https://github.com/ZhengGong-hub/openai-batch-wrapper.git@v0.0.1"
+    "openai-batch-wrapper @ git+https://github.com/ZhengGong-hub/openai-batch-wrapper.git@v0.0.2"
 ]
 
 [tool.black]

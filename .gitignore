@@ -141,5 +141,13 @@ dmypy.json
 
 # ignore the duckdb database
 *.duckdb
-
+*.db
 *.jsonl
+
+# ignore tex 
+*.aux
+*.fdb_latexmk
+*.fls
+*.out
+*.synctex.gz
+*.toc
