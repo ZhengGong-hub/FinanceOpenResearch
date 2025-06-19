@@ -141,3 +141,5 @@ dmypy.json
 
 # ignore the duckdb database
 *.duckdb
+
+*.jsonl

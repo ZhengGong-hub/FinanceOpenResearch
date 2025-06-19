@@ -1,0 +1,32 @@
+{
+    "name": "question_type",
+    "schema": {
+        "type": "object",
+        "properties": {
+            "innovation": {
+                "type": "integer"
+            },
+            "integrity": {
+                "type": "integer"
+            },
+            "quality": {
+                "type": "integer"
+            },
+            "respect": {
+                "type": "integer"
+            },
+            "teamwork": {
+                "type": "integer"
+            }
+        },
+        "required": [
+            "innovation",
+            "integrity",
+            "quality",
+            "respect",
+            "teamwork"
+        ],
+        "additionalProperties": false
+    },
+    "strict": true
+    }
