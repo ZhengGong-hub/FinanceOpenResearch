@@ -23,7 +23,9 @@
 %\tableofcontents
 %\newpage
 
-\section{Prompts}
+\section{Per-Question Analysis}
+
+\subsection{Prompts}
 You are analyzing an analyst question asked during a company earnings call. Your task is to assess the question across five cultural dimensions associated with the analyst’s employer (the brokerage firm), based only on the text of the question.
 
 Evaluate the question on the following dimensions. For each dimension, provide:
@@ -45,12 +47,49 @@ The five cultural dimensions are:
 \textbf{Analyst Question:} is below
 
 
-\section{Results}
+\subsection{Results}
 
 % Main content starts here
 \input{table.tex}    
 
 
 \input{table_by_year.tex}
+
+\section{Aggregated Questions Analysis}
+Instead of analyzing individual questions, we aggregated questions by broker-quarter to achieve two key objectives:
+\begin{itemize}
+\item Increase variance between brokers - By combining multiple questions per broker, you aimed to capture more distinctive cultural patterns
+\item Avoid unrepresentative short questions - Filtering out questions under 100 characters ensured more meaningful cultural signals
+\item We have a longer context to work with the score, which is more representative of the broker's culture
+\end{itemize}
+
+The following results are based on samples of questions per broker-quarter, not the entire dataset.
+
+\subsection{Prompts}
+You are analyzing a collection of questions asked by different analysts on different earnings calls. Those analysts are employed by the same firm. Your task is to assess the questions in aggregate across five cultural dimensions associated with the analyst’s employer (the brokerage firm), based on the text of the question.
+
+Evaluate the questions on the following dimensions. For each dimension, provide:
+\begin{itemize}
+\item A score from 1 (very weak) to 5 (very strong)
+\item A brief justification for the score
+\end{itemize}
+
+The five cultural dimensions are:
+
+\begin{itemize}
+\item \textbf{Innovation} — Does the question reflect forward thinking, creativity, or a novel approach to analysis?
+\item \textbf{Integrity} — Does it seek transparency, challenge vague or evasive answers, or emphasize ethical concerns?
+\item \textbf{Quality} — Is it precise, well-structured, and focused on operational excellence or customer satisfaction?
+\item \textbf{Respect} — Is the tone professional, considerate, and reflective of mutual respect?
+\item \textbf{Teamwork} — Does the question reference collaboration, consensus, shared goals, or coordination?
+\end{itemize}
+
+You do not provide a score per question, rather, you provide an aggregated score based on those collections of questions per dimension.
+
+Analyst Questions: is below.
+
+\subsection{Results}
+
+\input{table_broker_agg.tex}
 
 \end{document}

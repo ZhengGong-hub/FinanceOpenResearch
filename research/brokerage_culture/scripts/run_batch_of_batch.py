@@ -5,7 +5,7 @@ import glob
 # relative import 
 from openai_batch_wrapper.batch_manager import BatchManager
 
-job_paths = glob.glob("research/brokerage_culture/output_data/small_scale_random_200k/jsonl/job_*.jsonl")
+job_paths = glob.glob("research/brokerage_culture/output_data/analysts_charisma/jsonl/job_*.jsonl")
 
 for job_path in job_paths:
     batch_manager = BatchManager(

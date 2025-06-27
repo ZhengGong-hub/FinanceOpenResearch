@@ -1,0 +1,42 @@
+{
+    "name": "question_type",
+    "schema": {
+        "type": "object",
+        "properties": {
+            "pragmatic": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+            },
+            "sentiment": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+            },
+            "rhetorical_device_density": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+            },
+            "assertiveness": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+            },
+            "charisma": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+            }
+        },
+        "required": [
+            "pragmatic",
+            "sentiment",
+            "rhetorical_device_density",
+            "assertiveness",
+            "charisma"
+        ],
+        "additionalProperties": false
+    },
+    "strict": true
+}

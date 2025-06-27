@@ -151,3 +151,7 @@ dmypy.json
 *.out
 *.synctex.gz
 *.toc
+
+.DS_Store
+
+*.pdf

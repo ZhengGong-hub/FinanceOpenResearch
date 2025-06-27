@@ -1,0 +1,24 @@
+You are analyzing an analyst question asked during a company earnings call. Your task is to assess the question across four dimensions.
+
+For each dimension, provide:
+	•	A score from 0 (very weak) to 1 (very strong)
+	•	A brief justification for the score
+
+Dimensions:
+	1.	Pragmatic
+(Descriptive, Comparative, Predictive, Causal elements)
+Score example: 0.75 – contains predictive & causal aspects, but no explicit comparative framing.
+	2.	Sentiment
+(Overall tone from very negative to very positive)
+Score example: 0.20 – mostly neutral but slightly negative in phrasing.
+	3.	Rhetorical Device Density
+(Usage of metaphors, analogies, contrast words like “but”, inclusive pronouns “we/us”)
+Score example: 0.10 – a single pronoun “we” in a 20-word question.
+	4.	Assertiveness
+(Degree of confidence/directness)
+Score example: 0.90 – straightforward and firm language.
+    5. Chrismatic 
+Rate on a scale from 0 to 1 how "charismatic" this question sounds—meaning how engaging, persuasive, confident, and rhetorically strong it is.
+
+
+**Analyst Question:** is below
